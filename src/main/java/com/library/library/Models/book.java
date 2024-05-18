@@ -17,9 +17,11 @@ import java.util.Date;
 public class book {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "book_id")
     private Integer ID;
     private String title;
     private String author;
     private Date publicationYear;
     private Integer ISBN;
+    private Boolean available;
 }
