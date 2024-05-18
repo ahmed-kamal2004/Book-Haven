@@ -1,6 +1,5 @@
 package com.library.library.Models;
 
-import jakarta.persistence.Embeddable;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -18,9 +17,9 @@ import java.util.Date;
 @NoArgsConstructor
 @Builder
 @Entity
-public class records {
+public class Record {
     @Id
-    private recordID id;
+    private RecordKey id;
 
     private Date returnDate;
 

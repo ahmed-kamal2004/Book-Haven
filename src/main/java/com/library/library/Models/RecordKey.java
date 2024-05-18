@@ -9,15 +9,15 @@ import java.util.Date;
 
 
 @Embeddable
-public class recordID implements Serializable {
+public class RecordKey implements Serializable {
 
     @ManyToOne
     @JoinColumn( name = "book_id")
-    private book bookID;
+    private Book bookID;
 
     @ManyToOne
     @JoinColumn(name = "patron_id")
-    private patron patronID;
+    private Patron patronID;
 
     private Date loadDate;
 }
