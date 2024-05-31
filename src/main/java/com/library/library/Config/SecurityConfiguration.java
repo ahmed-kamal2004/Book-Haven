@@ -31,9 +31,19 @@ public class SecurityConfiguration {
         return http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(
                         req -> req
-                                .requestMatchers("/login/**","/logout/**","/signing/**")
+
+                                .requestMatchers("/v3/api-docs/**",
+                                        "/swagger-ui/**", "/swagger-ui.html",
+                                        "/v3/api-docs/**",
+                                        "/swagger-ui.html",
+                                        "/swagger-ui/**",
+                                        "/swagger-resources/**",
+                                        "/webjars/**")
                                 .permitAll()
-                                .requestMatchers("/admin/**").hasAuthority("ADMIN")
+                                .requestMatchers("/login/**","/logout/**","/signing/**","/api/**")
+                                .permitAll()
+                                .requestMatchers("/admin/**")
+                                .hasAuthority("ADMIN")
                                 .anyRequest()
                                 .authenticated()
                 )
