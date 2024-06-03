@@ -1,6 +1,9 @@
 package com.library.library.Filters;
 
 import com.library.library.Authentication.JwtService;
+import com.library.library.Repositories.LibrarianRepository;
+import com.library.library.Services.ComposedDetailsService;
+import com.library.library.Services.LibrarianService;
 import com.library.library.Services.PatronService;
 import jakarta.annotation.Nonnull;
 import jakarta.servlet.FilterChain;
@@ -8,14 +11,19 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Component
@@ -23,13 +31,19 @@ import java.io.IOException;
 public class JwtAuthFilter extends OncePerRequestFilter {
 
     private final JwtService jwtService;
+    private  ComposedDetailsService composedDetailsService;
     private final PatronService patronService;
+    private final LibrarianService librarianService;
+
     @Override
     protected void doFilterInternal(
            @Nonnull HttpServletRequest request,
            @Nonnull HttpServletResponse response,
            @Nonnull FilterChain filterChain) throws ServletException, IOException
     {
+
+
+
         String header = request.getHeader("Authorization");
 
         if(header == null || !header.startsWith("Bearer ")){
@@ -44,7 +58,13 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 
         if(username != null && SecurityContextHolder.getContext().getAuthentication() == null){
 
-            UserDetails user = this.patronService.loadUserByUsername(username);
+            List<UserDetailsService> services = new ArrayList<>(0);
+            services.add(this.librarianService);
+            services.add(this.patronService);
+
+            this.composedDetailsService.setServices(services);
+
+            UserDetails user = this.composedDetailsService.loadUserByUsername(username);
 
             if(this.jwtService.isValidToken(token,user)){
 
@@ -55,7 +75,11 @@ public class JwtAuthFilter extends OncePerRequestFilter {
                 authToken.setDetails(
                         new WebAuthenticationDetailsSource().buildDetails(request)
                 );
-                SecurityContextHolder.getContext().setAuthentication(authToken);
+
+                SecurityContext context = SecurityContextHolder.createEmptyContext();
+                context.setAuthentication(authToken);
+                SecurityContextHolder.setContext(context); // this approach is used to avoid Race Conditions
+
             }
 
         }

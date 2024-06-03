@@ -1,6 +1,7 @@
 package com.library.library.Config;
 
 import com.library.library.Filters.JwtAuthFilter;
+import com.library.library.Services.ComposedDetailsService;
 import com.library.library.Services.PatronService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -23,7 +24,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 @EnableWebSecurity(debug = true)
 public class SecurityConfiguration {
-    private final PatronService patronService;
+    private final ComposedDetailsService composedDetailsService;
     private final JwtAuthFilter jwtAuthFilter;
 
     @Bean
@@ -40,21 +41,19 @@ public class SecurityConfiguration {
                                         "/swagger-resources/**",
                                         "/webjars/**")
                                 .permitAll()
-                                .requestMatchers("/login/**","/logout/**","/signing/**","/api/**")
+                                .requestMatchers("/login-lib/**","/logout/**","/signing/**","/api/**","/register-lib")
                                 .permitAll()
-                                .requestMatchers("/admin/**")
-                                .hasAuthority("ADMIN")
                                 .anyRequest()
                                 .authenticated()
                 )
-                .userDetailsService(patronService)
+                .userDetailsService(composedDetailsService)
                 .sessionManagement( // No need for sessions
                         session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 )
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
                 .exceptionHandling(
                         e->e.accessDeniedHandler(
-                                        (request, response, accessDeniedException)->response.setStatus(403)
+                                        (request, response, accessDeniedException)->response.setStatus(401)
                                 )
                                 .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED)))
                 .build();

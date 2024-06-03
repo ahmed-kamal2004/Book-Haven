@@ -1,7 +1,7 @@
 package com.library.library.Repositories;
 
-import com.library.library.Models.Record;
-import com.library.library.Models.RecordKey;
+import com.library.library.ModelsDB.Record;
+import com.library.library.ModelsDB.RecordKey;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

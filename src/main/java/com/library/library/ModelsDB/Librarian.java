@@ -1,24 +1,28 @@
-package com.library.library.Models;
-
+package com.library.library.ModelsDB;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.Collections;
 
-@Table(name = "patron")
+
+@Table(name = "librarian")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @Entity
-public class Patron implements UserDetails {
+public class Librarian implements UserDetails {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column( name = "patron_id")
+    @Column( name = "librarian_id")
     private Integer ID;
     private String username;
     private String email;
@@ -26,8 +30,6 @@ public class Patron implements UserDetails {
     private String phoneNumber;
     private String firstName;
     private String lastName;
-
-
 
 
     @Override
