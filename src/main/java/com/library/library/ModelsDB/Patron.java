@@ -1,6 +1,5 @@
 package com.library.library.ModelsDB;
 
-
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
@@ -18,7 +17,7 @@ import java.util.Collections;
 public class Patron implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column( name = "patron_id")
+    @Column(name = "patron_id")
     private Integer ID;
     private String username;
     private String email;
@@ -27,9 +26,6 @@ public class Patron implements UserDetails {
     private String firstName;
     private String lastName;
     private boolean enabled;
-
-
-
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -63,6 +59,6 @@ public class Patron implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return this.enabled;
+        return true;
     }
 }
