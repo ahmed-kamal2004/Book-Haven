@@ -1,6 +1,6 @@
 package com.library.library.Controller;
 
-import com.library.library.Models.Book;
+import com.library.library.ModelsDB.Book;
 import com.library.library.Services.BookService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

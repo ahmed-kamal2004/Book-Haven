@@ -1,7 +1,6 @@
 package com.library.library.Services;
 
 import com.library.library.Repositories.LibrarianRepository;
-import com.library.library.Repositories.PatronRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -10,13 +9,13 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class PatronService implements UserDetailsService {
+public class LibrarianService implements UserDetailsService {
 
-    private final PatronRepository patronRepository;
+    private final LibrarianRepository librarianRepository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return this.patronRepository.findByUsername(username)
-                .orElseThrow(() -> new UsernameNotFoundException("Patron Not Found"));
+        return this.librarianRepository.findByUsername(username)
+                .orElseThrow(() -> new UsernameNotFoundException("Librarian Not Found"));
     }
 }
