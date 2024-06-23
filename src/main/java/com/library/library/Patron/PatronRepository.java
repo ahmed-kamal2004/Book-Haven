@@ -10,4 +10,6 @@ public interface PatronRepository extends UserRepository<Patron, Integer> {
 
     public Optional<Patron> findById(Integer id);
 
+    public void deleteByID(Integer iD);
+
 }

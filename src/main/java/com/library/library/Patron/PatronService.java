@@ -3,11 +3,14 @@ package com.library.library.Patron;
 import com.library.library.Exceptions.UserNotFoundException;
 import com.library.library.Patron.DTO.PatronDataDTO;
 import com.library.library.Patron.DTO.PatronInputDataDTO;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -36,7 +39,6 @@ public class PatronService implements UserDetailsService {
         return patrons.stream().map(this::convertPatronToPatronDataDTO).toList();
     }
 
-
     // User Updating Viewed Data "All data except Password and Enabled"
     public PatronDataDTO updatePatron(Integer Id, PatronInputDataDTO patron) {
         Optional<Patron> p = this.repository.findById(Id);
@@ -52,6 +54,16 @@ public class PatronService implements UserDetailsService {
             return this.convertPatronToPatronDataDTO(obj);
         }
         throw new UserNotFoundException("User Not Found");
+
+    }
+
+    @Transactional("transactionManager") // for handling the deletion operation
+    public void deletePatron(Integer Id) {
+        try {
+            this.repository.deleteByID(Id);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
 
     }
 

@@ -68,4 +68,9 @@ public class PatronController {
         }
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteById(@Parameter(description = "id") @PathVariable(value = "id") Integer Id) {
+        this.patronService.deletePatron(Id);
+        return ResponseEntity.noContent().build();
+    }
 }
