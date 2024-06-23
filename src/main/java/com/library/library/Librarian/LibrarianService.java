@@ -1,6 +1,5 @@
-package com.library.library.Services;
+package com.library.library.Librarian;
 
-import com.library.library.Repositories.LibrarianRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

@@ -1,5 +1,7 @@
 package com.library.library.Config;
 
+import com.library.library.Patron.DTO.PatronInputDataDTO;
+import com.library.library.Patron.Patron;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -9,7 +11,7 @@ import org.springframework.security.config.annotation.authentication.configurati
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import com.library.library.Services.ComposedDetailsService;
+import com.library.library.Authentication.ComposedDetailsService;
 
 import lombok.RequiredArgsConstructor;
 

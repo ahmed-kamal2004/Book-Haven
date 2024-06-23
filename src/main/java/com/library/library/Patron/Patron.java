@@ -1,4 +1,4 @@
-package com.library.library.ModelsDB;
+package com.library.library.Patron;
 
 import jakarta.persistence.*;
 import lombok.*;

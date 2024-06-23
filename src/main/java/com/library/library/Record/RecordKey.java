@@ -1,5 +1,7 @@
-package com.library.library.ModelsDB;
+package com.library.library.Record;
 
+import com.library.library.Book.Book;
+import com.library.library.Patron.Patron;
 import jakarta.persistence.Embeddable;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;

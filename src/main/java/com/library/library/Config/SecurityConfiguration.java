@@ -1,7 +1,7 @@
 package com.library.library.Config;
 
 import com.library.library.Filters.JwtAuthFilter;
-import com.library.library.Services.ComposedDetailsService;
+import com.library.library.Authentication.ComposedDetailsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -35,7 +35,7 @@ public class SecurityConfiguration {
                                                                                 "/swagger-resources/**",
                                                                                 "/webjars/**")
                                                                 .permitAll()
-                                                                .requestMatchers("/private/**")
+                                                                .requestMatchers("/public/**")
                                                                 .permitAll()
                                                                 .anyRequest()
                                                                 .authenticated())

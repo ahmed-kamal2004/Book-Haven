@@ -1,6 +1,5 @@
-package com.library.library.Services;
+package com.library.library.Authentication;
 
-import com.library.library.Authentication.JwtService;
 import com.library.library.Models.AuthRequest;
 import com.library.library.Models.AuthResponse;
 import com.library.library.Models.SignUpRequest;

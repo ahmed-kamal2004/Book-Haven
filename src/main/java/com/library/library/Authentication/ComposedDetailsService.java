@@ -1,4 +1,4 @@
-package com.library.library.Services;
+package com.library.library.Authentication;
 
 import com.library.library.Librarian.LibrarianService;
 import com.library.library.Patron.PatronService;
@@ -40,8 +40,7 @@ public class ComposedDetailsService implements UserDetailsService {
             try {
                 UserDetails user = service.loadUserByUsername(username);
                 return user;
-            } catch (UsernameNotFoundException e) {
-                continue;
+            } catch (UsernameNotFoundException ignored) {
             }
         }
         throw new UsernameNotFoundException("User Not Found");

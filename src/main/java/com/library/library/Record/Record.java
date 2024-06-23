@@ -1,4 +1,4 @@
-package com.library.library.ModelsDB;
+package com.library.library.Record;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

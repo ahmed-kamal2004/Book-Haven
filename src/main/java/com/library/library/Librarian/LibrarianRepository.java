@@ -1,6 +1,6 @@
-package com.library.library.Repositories;
+package com.library.library.Librarian;
 
-import com.library.library.ModelsDB.Librarian;
+import com.library.library.Utilities.UserRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository

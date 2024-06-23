@@ -1,4 +1,7 @@
 package com.library.library.Exceptions;
 
-public class UserNotFoundException {
+public class UserNotFoundException extends RuntimeException{
+    public UserNotFoundException(String msg){
+        super(msg);
+    }
 }

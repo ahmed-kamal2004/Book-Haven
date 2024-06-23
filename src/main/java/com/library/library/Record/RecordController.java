@@ -1,4 +1,4 @@
-package com.library.library.Controller;
+package com.library.library.Record;
 
 import org.springframework.stereotype.Controller;
 

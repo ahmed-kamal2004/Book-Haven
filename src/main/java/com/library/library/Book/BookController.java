@@ -1,7 +1,5 @@
-package com.library.library.Controller;
+package com.library.library.Book;
 
-import com.library.library.ModelsDB.Book;
-import com.library.library.Services.BookService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

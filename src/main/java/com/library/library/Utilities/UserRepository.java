@@ -1,4 +1,4 @@
-package com.library.library.Repositories;
+package com.library.library.Utilities;
 
 import java.util.Optional;
 
@@ -11,4 +11,7 @@ public interface UserRepository<T, ID> extends JpaRepository<T, ID> {
     Optional<UserDetails> findByUsername(String username);
 
     Optional<UserDetails> findByEmail(String email);
+
+    class GlobalConstants {
+    }
 }

@@ -1,8 +1,13 @@
-package com.library.library.Repositories;
+package com.library.library.Patron;
 
-import com.library.library.ModelsDB.Patron;
+import com.library.library.Utilities.UserRepository;
 import org.springframework.stereotype.Repository;
+
+import java.util.Optional;
 
 @Repository
 public interface PatronRepository extends UserRepository<Patron, Integer> {
+
+    public Optional<Patron> findById(Integer id);
+
 }

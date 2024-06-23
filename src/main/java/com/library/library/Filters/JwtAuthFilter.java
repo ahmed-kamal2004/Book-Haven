@@ -1,9 +1,9 @@
 package com.library.library.Filters;
 
 import com.library.library.Authentication.JwtService;
-import com.library.library.Services.ComposedDetailsService;
-import com.library.library.Services.LibrarianService;
-import com.library.library.Services.PatronService;
+import com.library.library.Authentication.ComposedDetailsService;
+import com.library.library.Librarian.LibrarianService;
+import com.library.library.Patron.PatronService;
 import jakarta.annotation.Nonnull;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -14,21 +14,18 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 @Component
 @RequiredArgsConstructor
 public class JwtAuthFilter extends OncePerRequestFilter {
 
     private final JwtService jwtService;
-    private ComposedDetailsService composedDetailsService;
+    private final ComposedDetailsService composedDetailsService;
     private final PatronService patronService;
     private final LibrarianService librarianService;
 
