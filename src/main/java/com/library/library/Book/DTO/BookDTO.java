@@ -1,28 +1,21 @@
-package com.library.library.Book;
+package com.library.library.Book.DTO;
 
-import jakarta.persistence.*;
+import java.util.Date;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
-
-@Table(name = "book")
 @Data
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
-@Entity
-public class Book {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "book_id")
+public class BookDTO {
     private Integer ID;
     private String title;
     private String author;
     private Date publicationYear;
-    @Column(unique = true)
     private Integer ISBN;
     private Boolean available;
 }

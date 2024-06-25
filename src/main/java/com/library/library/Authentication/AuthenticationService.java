@@ -94,6 +94,7 @@ public class AuthenticationService {
                                 .lastName(user.getLastName())
                                 .phoneNumber(user.getPhoneNumber())
                                 .password(this.passwordEncoder.encode(user.getPassword()))
+                                .enabled(true)
                                 .build();
 
                 this.patronRepository.save(registeredPatron);
