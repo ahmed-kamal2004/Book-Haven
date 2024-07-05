@@ -15,3 +15,7 @@ https://github.com/ahmed-kamal2004/lib-mangement-system/assets/98265644/c5be6692
 > Swagger: http://localhost:8090/swagger-ui/index.html
 ### Swagger Demo
 ![image](https://github.com/ahmed-kamal2004/lib-mangement-system/assets/98265644/9aad94b2-11fd-43f2-ac75-5a0328f8c897)
+
+
+## How to Run 💥
+> mvn spring-boot:run
