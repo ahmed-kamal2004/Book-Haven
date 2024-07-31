@@ -4,31 +4,38 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import org.bson.types.ObjectId;
-import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.MongoId;
+import org.springframework.data.annotation.Id;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
 import com.library.security.secure.utlities.UserRole;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 
-@Document
+@Entity(name = "user")
 @Data
 @AllArgsConstructor
 @Builder
 public class UserModel implements UserDetails {
 
-    @MongoId
-    private ObjectId ID;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
+    private Integer id;
+
+    @Column(unique = true, nullable = false, updatable = false)
     private String email;
+    @Column(nullable = false)
     private String password;
     private String phoneNumber;
+    @Column(insertable = false)
     private Boolean active;
+    @Column(insertable = false)
     private Boolean enabled;
     private List<UserRole> roles;
 
@@ -48,7 +55,6 @@ public class UserModel implements UserDetails {
 
     @Override
     public String getUsername() {
-        // TODO Auto-generated method stub
         return this.email;
     }
 
