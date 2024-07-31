@@ -1,0 +1,25 @@
+spring:
+    config:
+        activate:
+            on-profile: "prod"
+    application:
+        name: secure
+    datasource:
+        url: jdbc:mysql://localhost:3306/libmanagement
+        driverClassName: com.mysql.cj.jdbc.Driver
+    jpa:
+        show-sql: false
+        hibernate:
+            ddl-auto: update
+        generate-ddl: true  ## for schema initialization
+        database-platform: org.hibernate.dialect.MySQLDialect
+server:
+    port: 8090
+
+logging:
+    file:
+        name: log_prod.log   ## Log file
+    level:
+        org:
+            springframework:
+                security:  DEBUG
