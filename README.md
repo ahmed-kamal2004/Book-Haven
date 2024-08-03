@@ -19,3 +19,13 @@ https://github.com/ahmed-kamal2004/lib-mangement-system/assets/98265644/c5be6692
 
 ## How to Run 💥
 > mvn spring-boot:run
+
+## Contributors
+<a href="https://github.com/ahmed-kamal2004/lib-mangement-system/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=ahmed-kamal2004/lib-mangement-system" />
+</a>
+
+## LICENSE
+
+[GPL v3](/LICENSE) © ahmed-kamal2004
+<img align="right" src="https://visitor-badge.laobi.icu/badge?page_id=ahmed-kamal2004.lib-mangement-system"/>
