@@ -10,7 +10,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.web.header.Header;
 import org.springframework.web.bind.annotation.*;
 
-@RestController(value = "userController-1")
+import java.util.Map;
+
+@RestController
 @RequestMapping(path = "api/v1/auth/")
 @RequiredArgsConstructor
 public class UserController {
@@ -20,7 +22,8 @@ public class UserController {
     @PostMapping("sign-up")
     public ResponseEntity<String> singUp(@RequestHeader HttpHeaders httpHeaders, @RequestBody  UserDto userDto){
 //        String token = this.userModelService.signup(UserDto);
-        return ResponseEntity.ok().body(httpHeaders.toString());
+        System.out.println(httpHeaders.get("connection"));
+        return ResponseEntity.ok().body(httpHeaders.get("connection").toString());
     }
 
 }
