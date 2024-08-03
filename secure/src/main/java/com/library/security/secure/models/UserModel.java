@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.List;
 
 import jakarta.persistence.*;
+import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,6 +19,7 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 @Builder
+@NoArgsConstructor
 public class UserModel implements UserDetails {
 
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -29,9 +31,9 @@ public class UserModel implements UserDetails {
     @Column(nullable = false)
     private String password;
     private String phoneNumber;
-    @Column(insertable = false)
+    @Column(nullable = false)
     private Boolean active;
-    @Column(insertable = false)
+    @Column(nullable = false)
     private Boolean enabled;
     private List<UserRole> roles;
 
