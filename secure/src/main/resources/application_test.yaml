@@ -17,10 +17,20 @@ spring:
     h2:
         console: 
             enabled: true
+
+
+secure:
+    config:
+        secretkey: eriehiohrweoirhewoirewhrioewrjewoirhewsdbfnfsnfsdjfsndfjsbfsdf
+        days: 15
+
+
 server:
     port: 8080
 
 logging:
     file:
         name: log_test.log   ## Log file
+
+
 

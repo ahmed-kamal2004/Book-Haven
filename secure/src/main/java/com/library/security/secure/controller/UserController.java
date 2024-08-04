@@ -1,20 +1,16 @@
 package com.library.security.secure.controller;
 
 
+import com.library.security.secure.dto.LogInDto;
 import com.library.security.secure.dto.ResponseDto;
 import com.library.security.secure.dto.UserDto;
 import com.library.security.secure.services.IUserModelService;
-import com.library.security.secure.services.UserModelService;
 import com.library.security.secure.utlities.Constants;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.web.header.Header;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Map;
 
 @RestController
 @RequestMapping(path = "api/v1/auth/")
@@ -22,6 +18,21 @@ import java.util.Map;
 public class UserController {
 
     private final IUserModelService userModelService;
+
+
+    @PostMapping("log-in")
+    public ResponseEntity<ResponseDto> logIn(@RequestBody LogInDto logInDto){
+
+//        LogInDto logInDto = new LogInDto("string","string");
+
+        String token = this.userModelService.logIn(logInDto);
+
+        ResponseDto responseDto = new ResponseDto(HttpStatus.ACCEPTED,token);
+
+        return new ResponseEntity<>(responseDto,HttpStatus.ACCEPTED);
+    }
+
+
 
     @PostMapping("sign-up")
     public ResponseEntity<ResponseDto> singUp(@RequestHeader HttpHeaders httpHeaders, @RequestBody  UserDto userDto){
@@ -33,5 +44,6 @@ public class UserController {
         )
         , HttpStatus.CREATED);
     }
+
 
 }

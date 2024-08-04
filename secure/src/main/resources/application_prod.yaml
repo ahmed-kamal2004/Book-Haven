@@ -13,6 +13,10 @@ spring:
             ddl-auto: update
         generate-ddl: true  ## for schema initialization
         database-platform: org.hibernate.dialect.MySQLDialect
+secure:
+    config:
+        secretkey: eriehiohrweoirhewoirewhrioewrjewoirhewsdbfnfsnfsdjfsndfjsbfsdf
+        days: 15
 server:
     port: 8090
 
