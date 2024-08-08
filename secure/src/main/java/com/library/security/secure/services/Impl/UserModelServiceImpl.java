@@ -64,15 +64,7 @@ public class UserModelServiceImpl implements IUserModelService {
 
         List<String> lista = auth.getAuthorities().stream().map(Object::toString).toList();
 
-//        System.out.println(lista);
-//
-//        for(var v:lista){
-//            System.out.println(v);
-//        }
-
         String token = this.jwtService.generateToken(auth.getName(),lista);
-
-        System.out.println(token);
 
         return token;
     }
