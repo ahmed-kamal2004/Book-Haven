@@ -7,7 +7,10 @@ https://github.com/ahmed-kamal2004/lib-mangement-system/assets/98265644/c5be6692
 ### Approach 🚀
 > My Security Architecture supports two users (Librarian as Admin and Patron as Client).
 > My Approach is to use Composed userDetailsService injected into the AuthenticationProviders.
-> The Architecture is open for expansion to support more types of Users. 
+> The architecture is open to expansion to support more types of users.
+## Architecture 
+![WhatsApp Image 2024-08-05 at 10 45 20 PM](https://github.com/user-attachments/assets/b231fd0c-bd6e-4d88-8613-0d05a936b1ed)
+
 ## Database 💿 "MySQL Relational RDBMS"
 ## Swagger Docs
 > Since I came from a FastAPI background, Integrating with Swagger UI was an important goal for me to facilitate development and documentation.
